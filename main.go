@@ -1,29 +1,25 @@
 package main
 
 import (
-	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
 
 type Recipe struct {
-	ID string `json:"id"`
-	Title string `json:"title"`
-	Author string `json:"author"`
+	Name        string      `json:"name"`
+	Tags        []string    `json:"tags"`
+	Ingredients []string    `json:"ingredients"`
+	Intructions []string    `json:"intructions"`
+	PublishAt   time.Time   `json:"publishedAt"`
+	UpdateAt    time.Time   `json:"updateAt"`
 }
 
 
-var recipes = []Recipe{
-	{ID: "1",Title: "title1"},
-	{ID: "1",Title: "title1"},
-	{ID: "1",Title: "title1"},
-}
 
 
-func getRecipes(c *gin.Context){
-   c.IndentedJSON(http.StatusOK,recipes)
-}
+func getRecipes(c *gin.Context){}
 
 func main(){
 	router  := gin.Default()
